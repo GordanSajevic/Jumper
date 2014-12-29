@@ -111,7 +111,7 @@ public class Body {
 	
 	public boolean chekcCollision(Body other)
 	{
-		int distance = this.center.distance(other.center) ;
+		int distance = this.start.distance(other.start) ;
 		if (distance > this.height/2 + other.height/2 && distance > this.width/2 + other.width/2)
 		{
 			return false;
