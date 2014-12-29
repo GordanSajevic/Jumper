@@ -22,6 +22,11 @@ public class GameGraphics extends JPanel implements ActionListener{
 	private Body player;
 	private int bodovi=0;
 	
+	/**
+	 * U konstruktoru kreiramo niz elements[] od 10 različitih figura, sa random brzinama
+	 *  po x osi i random dimenzijama. Zatim kreiramo figuru za igrača (tipa Oval), i timer za animaciju
+	 */
+	
 	public GameGraphics()
 	{
 		super();
@@ -34,7 +39,7 @@ public class GameGraphics extends JPanel implements ActionListener{
 			elements[i] = new Rect(1000, 550, 20 + (int)(Math.random() * 50), 20 + (int)(Math.random() * 75), Color.BLUE,  -1 - (int)(Math.random() * 5), 0, 1000 + (int)(Math.random() * 5000), 600, -100,-100);
 		}
 		player = new Oval(300, 150, 50, 50, Color.RED, 0, 30, 800, 600, 0, 0);
-		//player = new DrawImage(300, 150, 50, 50, 0, 30, 800, 600, 0, 0, "/Users/gordansajevic/Documents/workspace/Jumper/images/8_ball.png");
+	//	player = new DrawImage(300, 150, 50, 50, 0, 30, 800, 600, 0, 0, "/images/BUGS017.png");
 		animation = new Timer(25, this);
 		animation.start();
 		addKeyListener(new KeyHandler());
@@ -47,6 +52,10 @@ public class GameGraphics extends JPanel implements ActionListener{
 		repaint();
 		
 	}
+	
+	/**
+	 * U paintComponent crtamo sve figure iz niza elements, kao i figuru za igrača i zelenu podlogu
+	 */
 	
 	@Override
 	public void paintComponent(Graphics g)
@@ -72,6 +81,12 @@ public class GameGraphics extends JPanel implements ActionListener{
 		}
 	}
 
+	/**
+	 * Pozivamo metodu jump() za bilo koju tipku na tastaturi.
+	 * @author Gordan
+	 *
+	 */
+	
 	private class KeyHandler extends KeyAdapter{
 		
 		public void keyTyped(KeyEvent k)
