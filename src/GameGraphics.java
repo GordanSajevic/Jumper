@@ -20,6 +20,7 @@ public class GameGraphics extends JPanel implements ActionListener{
 	protected int width;
 	protected int height;
 	private Body player;
+	private int bodovi=0;
 	
 	public GameGraphics()
 	{
@@ -30,7 +31,7 @@ public class GameGraphics extends JPanel implements ActionListener{
 		elementCounter = 5;
 		for (int i=0; i<10; i++)
 		{
-			elements[i] = new Rect(1000, 550, 20 + (int)(Math.random() * 50), 20 + (int)(Math.random() * 75), Color.BLUE,  -1 - (int)(Math.random() * 10), 0, 800 + 800*i, 600, -100,-100);
+			elements[i] = new Rect(1000, 550, 20 + (int)(Math.random() * 50), 20 + (int)(Math.random() * 75), Color.BLUE,  -1 - (int)(Math.random() * 5), 0, 1000 + (int)(Math.random() * 5000), 600, -100,-100);
 		}
 		player = new Oval(300, 150, 50, 50, Color.RED, 0, 30, 800, 600, 0, 0);
 		//player = new DrawImage(300, 150, 50, 50, 0, 30, 800, 600, 0, 0, "/Users/gordansajevic/Documents/workspace/Jumper/images/8_ball.png");
@@ -67,7 +68,7 @@ public class GameGraphics extends JPanel implements ActionListener{
 		
 		if(stop == true){
 				animation.stop();
-				JOptionPane.showMessageDialog(null, "Izgubio si", "Prozor",  JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Izgubio si. Bodovi: " + bodovi--, "Prozor",  JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -76,7 +77,7 @@ public class GameGraphics extends JPanel implements ActionListener{
 		public void keyTyped(KeyEvent k)
 		{
 			player.jump();
-			System.out.println(k.getKeyCode());
+			bodovi++;
 		}
 		
 		
