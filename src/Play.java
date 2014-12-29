@@ -10,6 +10,12 @@ import javax.swing.Timer;
 
 public class Play extends JPanel{
 
+	/**
+	 * U main funkciji kreiramo prozor, a zatim na prozor lijepimo panel tipa GameGraphics.
+	 * Neophodno je i postaviti fokus na panel
+	 * @param args
+	 */
+	
 	public static void main(String[] args) {
 		JFrame window = new JFrame();
 		GameGraphics panel = new GameGraphics();
