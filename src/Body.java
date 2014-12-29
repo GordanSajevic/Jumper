@@ -8,6 +8,10 @@ import javax.swing.Timer;
 
 public class Body {
 
+	/**
+	 * Sve klasne varijable. Tačke start i center su objekti tipa Point
+	 */
+	
 	private int width;
 	private int height;
 	private Color color;
@@ -20,6 +24,21 @@ public class Body {
 	private int minX;
 	private int minY;
 	
+	
+	/**
+	 * Konstruktor koji prima sve parametre
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param color
+	 * @param speedX
+	 * @param speedY
+	 * @param maxX
+	 * @param maxY
+	 * @param minX
+	 * @param minY
+	 */
 	
 	public Body(int x, int y, int width, int height, Color color, int speedX, int speedY, int maxX, int maxY, int minX, int minY) 
 	{
@@ -37,6 +56,19 @@ public class Body {
 		
 	}
 	
+	/**
+	 * Konstruktor koji ne prima parametre za brzinu
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param color
+	 * @param maxX
+	 * @param maxY
+	 * @param minX
+	 * @param minY
+	 */
+	
 	public Body(int x, int y, int width, int height, Color color, int maxX, int maxY, int minX, int minY)
 	{
 		this.start = new Point(x, y);
@@ -52,6 +84,20 @@ public class Body {
 		this.minY = minY;
 		
 	}
+	
+	/**
+	 * Konstruktor koji ne prima parametar za boju
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param speedX
+	 * @param speedY
+	 * @param maxX
+	 * @param maxY
+	 * @param minX
+	 * @param minY
+	 */
 	
 	public Body(int x, int y, int width, int height, int speedX, int speedY, int maxX, int maxY, int minX, int minY)
 	{
@@ -69,38 +115,78 @@ public class Body {
 		;
 	}
 	
+	/**
+	 * Getter za širinu figure
+	 * @return width
+	 */
+	
 	public int getWidth()
 	{
 		return width;
 	}
+	
+	/**
+	 * Getter za visinufigure
+	 * @return height
+	 */
 	
 	public int getHeight()
 	{
 		return height;
 	}
 	
+	/**
+	 * Getter za boju figure
+	 * @return color
+	 */
+	
 	public Color getColor()
 	{
 		return color;
 	}
+	
+	/**
+	 * Getter za početnu tačku figure
+	 * @return start
+	 */
 	
 	public Point getStart()
 	{
 		return start;
 	}
 	
+	/**
+	 * Getter za centralnu tačku figure
+	 * @return
+	 */
+	
 	public Point getCenter()
 	{
 		return center;
 	}
 	
+	/**
+	 * Getter za brzinu po x osi
+	 * @return speedX
+	 */
+	
 	public int getSpeedX(){
 		return speedX;
 	}
 
+	/**
+	 * Getter za brzinu po y osi
+	 * @return speedY
+	 */
+	
 	public int getSpeedY(){
 		return speedY;
 	}
+	
+	/**
+	 * Metoda za crtanje (koristimo return jer u ovoj klasi ne znamo koju figuru treba crtati)
+	 * @param g
+	 */
 	
 	public void draw(Graphics g)
 	{
@@ -108,6 +194,12 @@ public class Body {
 		g.setColor(this.color);
 		return;
 	}
+	
+	/**
+	 * Metoda koja provjerava da li se dvije figure dodiruju
+	 * @param other
+	 * @return boolean
+	 */
 	
 	public boolean chekcCollision(Body other)
 	{
@@ -118,6 +210,11 @@ public class Body {
 		}
 		return true;
 	}
+	
+	/**
+	 * Metoda koja pomjera figuru za određene brzine po x i y osama.
+	 * Ukoliko figura dođe do kranje tačke prozora, figura ne ide dalje, tj. brzina je 0
+	 */
 	
 	private void move()
 	{
@@ -145,13 +242,27 @@ public class Body {
 		this.center.move(speedX, speedY);
 	}
 
+	/**
+	 * Setter za koordinatu x početne tačke
+	 * @param x
+	 */
+	
 	public void setX(int x) {
 		this.start.setX(x);
 	}
 	
+	/**
+	 * Setter za koordinatu y početne tačke
+	 * @param y
+	 */
+	
 	public void setY(int y) {
 		this.start.setY(y);
 	}
+	
+	/**
+	 * Metoda koja omogućava "skok" figure
+	 */
 	
 	public void jump()
 	{
@@ -163,6 +274,10 @@ public class Body {
 		}
 	}
 	
+	/**
+	 * Metoda koja figuru ponovo vraća na početak prozora, ako figura dođe do kraja
+	 */
+	
 	public void reset()
 	{
 		if(this.start.getX() <= minX)
@@ -171,6 +286,12 @@ public class Body {
 			this.center.setX(maxX+width/2);
 		}
 	}
+	
+	/**
+	 * Handler za skok 
+	 * @author Gordan
+	 *
+	 */
 	
 	private class JumpHandler implements ActionListener
 	{
