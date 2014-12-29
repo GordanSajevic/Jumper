@@ -15,7 +15,7 @@ public class Play extends JPanel{
 		GameGraphics panel = new GameGraphics();
 		window.setContentPane(panel);
 		window.setVisible(true);
-		window.setSize(1000, 800);
+		window.setSize(1200, 800);
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		panel.requestFocus(false);
 
